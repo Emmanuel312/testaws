@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  nodejs:
+    image: emmanuel312/testaws
+    ports:
+      - "3000:3000"
+    container_name: testaws
+    restart: unless-stopped
+    networks:
+      - app-network
+  nginx:
+    image: nginx:mainline-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - nodejs
+
+networks:
+  app-network:
+    driver: bridge
