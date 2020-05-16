@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  return res.json({ test: "docker compose works" });
+  return res.json({ test: "docker compose pull" });
 });
 
 app.listen(PORT, HOST, () => console.log("Server on por 3000"));
