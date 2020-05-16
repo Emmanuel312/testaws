@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    container_name: testaws
+    restart: unless-stopped
+    networks:
+      - app-network
+    volumes:
+      - .:/usr/src/app
+  nginx:
+    image: nginx:mainline-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.dev:/etc/nginx/conf.d
+    depends_on:
+      - nodejs
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
