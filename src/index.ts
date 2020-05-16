@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  return res.json({ test: "vai" });
+  return res.json({ test: "foi" });
 });
 
 app.listen(PORT, HOST, () => console.log("Server on por 3000"));
