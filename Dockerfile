@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:12-alpine
 RUN npm i -g @nestjs/cli
 WORKDIR /usr/src/app
 COPY package.json ./
